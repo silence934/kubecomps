@@ -891,5 +891,20 @@ func (m SMonitorComponentManager) syncSystemGrafanaDashboard(ctx context.Context
 		return errors.Wrap(err, "import telegraf system dashboard to grafana")
 	}
 
+	log.Infof("import telegraf system dashboard to grafana successful")
+
+	if err := cli.ImportDashboard(ctx,
+		embed.Get(embed.SERVICE_MONITOR),
+		grafana.ImportDashboardParams{
+			// FolderId:  sysFolder.Id,
+			FolderId:  0,
+			Overwrite: true,
+			Inputs:    defaultDBInputs,
+		},
+	); err != nil {
+		return errors.Wrap(err, "import service monitor dashboard to grafana")
+	}
+
+	log.Infof("import service monitor dashboard to grafana successful")
 	return nil
 }
