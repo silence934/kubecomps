@@ -896,7 +896,6 @@ func (m SMonitorComponentManager) syncSystemGrafanaDashboard(ctx context.Context
 	if err := cli.ImportDashboard(ctx,
 		embed.Get(embed.SERVICE_MONITOR),
 		grafana.ImportDashboardParams{
-			// FolderId:  sysFolder.Id,
 			FolderId:  0,
 			Overwrite: true,
 			Inputs:    defaultDBInputs,
