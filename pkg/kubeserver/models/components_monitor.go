@@ -894,7 +894,7 @@ func (m SMonitorComponentManager) syncSystemGrafanaDashboard(ctx context.Context
 	log.Infof("import telegraf system dashboard to grafana successful")
 
 	if err := cli.ImportDashboard(ctx,
-		embed.Get(embed.SERVICE_MONITOR),
+		embed.Get(embed.SERVICE_MONITOR_JSON),
 		grafana.ImportDashboardParams{
 			FolderId:  0,
 			Overwrite: true,
